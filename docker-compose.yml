@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+    php:
+        image: httpd:latest
+        container_name: frontend
+        build:
+            context: .
+        environment:
+            WEB_DOCUMENT_ROOT: /usr/local/apache2/htdocs
+        ports:
+            - 807:80
+        #volumes:
+        #    - /./:/usr/local/apache2/htdocs/

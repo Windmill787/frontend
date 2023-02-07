@@ -1,0 +1,90 @@
+@import "button";
+@import "modal";
+@import "header";
+@import "footer";
+@import "grid";
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("/assets/font/static/Montserrat-Regular.ttf") format('truetype');
+}
+
+/* Base */
+html, body {
+    font-size: 14px;
+    font-style: normal;
+    color: $blackColor;
+    line-height: 1;
+    height: 100%;
+    width: 100%;
+    font-weight: 400;
+}
+
+body {
+    @media (max-width: 767px) {
+        &.lock {
+            overflow: hidden;
+        }
+    }
+}
+
+/* Nullify */
+*, ::before, ::after {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+:focus, :active {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+
+    &:focus, &:active {
+        outline: none;
+    }
+
+    &:visited, &:hover {
+        text-decoration: none;
+    }
+}
+
+nav, footer, header, aside {
+    display: block;
+}
+
+input, button, textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* Main */
+.main {
+    flex: 1 1 auto;
+    padding-top: $headerHeight;
+}

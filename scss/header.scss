@@ -1,0 +1,214 @@
+@import "variables";
+
+.header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    color: white;
+
+    &__container {
+        display: flex;
+        align-items: stretch;
+        min-height: $headerHeight;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    &__logo {
+        font-size: 20px;
+        font-weight: bold;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        flex: 0 0 $headerHeight;
+        z-index: 3;
+        position: relative;
+
+        @media (max-width: 767px) {
+            //flex: 0 0 $headerHeightMobile; for image only
+        }
+
+        img {
+            max-width: 100%;
+            max-height: $headerHeight;
+        }
+    }
+
+    &__menu {
+        margin-left: $headerHeight;
+        z-index: 3;
+        @media (max-width: 767px) {
+            position: fixed;
+            z-index: 2;
+            top: -100%;
+            right: 0;
+            //bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $redColor;
+            padding-top: $headerHeight;
+
+            // burger
+            //display: block;
+            //margin-top: $headerHeight;
+            //margin-bottom: $footerHeight;
+            //justify-content: center;
+            flex-wrap: wrap;
+            overflow: auto;
+            //top: -100%;
+            //padding-bottom: $headerHeight;
+            transition: all 0.3s ease 0s;
+
+            &.active {
+                top: 0;
+                //bottom: 0;
+                //height: auto;
+            }
+        }
+    }
+
+    &__burger {
+        display: none;
+        cursor: pointer;
+        @media (max-width: 767px) {
+            display: flex;
+            position: relative;
+            width: 40px;
+            height: $headerHeight;
+            z-index: 3;
+        }
+
+        &:before, &:after {
+            content: '';
+            background-color: white;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            transition: all 0.3s ease 0s;
+        }
+
+        &:before {
+            top: calc($headerHeight / 3 - 2px);
+        }
+
+        &:after {
+            bottom: calc($headerHeight / 3 - 2px);
+        }
+
+        span {
+            position: absolute;
+            background-color: white;
+            width: 100%;
+            left: 0;
+            top: calc($headerHeight / 2 - 1px);
+            height: 2px;
+            transition: all 0.3s ease 0s;
+        }
+
+        &.active {
+            &:before {
+                transform: rotate(45deg);
+                top: calc($headerHeight / 2 - 1px);
+            }
+
+            &:after {
+                transform: rotate(-45deg);
+                bottom: calc($headerHeight / 2 - 1px);
+            }
+
+            span {
+                transform: scale(0);
+            }
+        }
+    }
+
+    &:before {
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: $blackColor;
+        z-index: 3;
+    }
+}
+
+.menu {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        @media (max-width: 767px) {
+            // burger
+            flex-direction: column;
+            width: 100%;
+            //overflow: auto;
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-self: stretch;
+        align-items: center;
+        height: $headerHeight;
+
+        &:not(:last-child) {
+            //margin-right: 20px;
+
+            @media (max-width: 767px) {
+                //margin-right: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            // burger
+            //margin: 0 0 20px 0;
+            width: 100%;
+            //flex: 1 1 50px;
+        }
+
+        &:hover {
+            color: $defaultColor;
+        }
+    }
+
+    &__link {
+        font-size: 16px;
+        color: inherit;
+        display: flex;
+        align-self: stretch;
+        align-items: center;
+        padding: 0 15px;
+
+        @media (max-width: 767px) {
+            // burger
+            width: 100%;
+            justify-content: center;
+            padding: 0;
+        }
+    }
+
+    &__profile {
+        max-height: $headerHeight;
+        max-width: $headerHeight;
+        min-height: $headerHeight;
+        min-width: $headerHeight;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+
+        @media (max-width: 767px) {
+            // burger
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}
+

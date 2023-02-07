@@ -1,0 +1,100 @@
+@import "variables";
+@import "mixins";
+
+.btn {
+    padding: 10px 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+    font-size: 0.7rem;
+}
+
+.btn-small {
+    padding: 4px 7px;
+    font-size: 0.6rem;
+}
+
+.btn-default-border {
+    @include btnColorBorder($defaultColor);
+}
+
+.btn-blue-border {
+    @include btnColorBorder($blueColor)
+}
+
+.btn-black-border {
+    @include btnColorBorder($blackColor);
+}
+
+.btn-red-border {
+    @include btnColorBorder($redColor);
+}
+
+.btn-green-border {
+    @include btnColorBorder($greenColor);
+}
+
+.btn-default {
+    @include btnColor($defaultColor);
+}
+
+.btn-blue {
+    @include btnColor($blueColor)
+}
+
+.btn-black {
+    @include btnColor($blackColor);
+}
+
+.btn-red {
+    @include btnColor($redColor);
+}
+
+.btn-green {
+    @include btnColor($greenColor);
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+.btn-loading {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    //padding: 2rem;
+    //border: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -2;
+        left: -40%;
+        top: -135%;
+        border: 1px solid transparent;
+        border-radius: 200px;
+        width: 150px;
+        height: 150px;
+        //background-color: #399953;
+        background-repeat: no-repeat;
+        background-size: 50% 50%, 50% 50%;
+        background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), linear-gradient(white, white);
+        animation: rotate 2s linear infinite;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: 2px;
+        top: 2px;
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        background: inherit;
+        //border-radius: 5px;
+        //animation: opacityChange 3s infinite alternate;
+    }
+}

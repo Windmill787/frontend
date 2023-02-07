@@ -1,0 +1,14 @@
+@import "variables";
+
+.footer {
+    min-height: $footerHeight;
+    background-color: $blueColor;
+    color: white;
+}
+
+.footer__container {
+    display: flex;
+    align-items: stretch;
+    min-height: $footerHeight;
+    justify-content: space-between;
+}
