@@ -1,11 +1,14 @@
-version: "3.9"
+version: "3"
 
 services:
-    apache:
-        image: httpd:latest
+    frontend:
+        image: webpack
         container_name: frontend
+        build: .
         ports:
-            - 8080:80
+            - 8080:8080
         volumes:
-            - .:/usr/local/apache2/htdocs
-            - /usr/local/apache2/htdocs/node_modules
+            - ./:/app
+            - node_modules:/app/node_modules
+volumes:
+    node_modules:

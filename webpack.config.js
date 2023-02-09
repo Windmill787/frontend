@@ -10,6 +10,7 @@ module.exports = {
     devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
+        publicPath: "/dist/",
         filename: 'bundle.js'
     },
     resolve: {
@@ -58,22 +59,21 @@ module.exports = {
         ]
     },
     devServer: {
-        //port: 80,
-        // host: '0.0.0.0',
+        port: 8080,
+        host: '0.0.0.0',
         static: {
             directory: path.join(__dirname, '/')
-        }
+        },
     },
-    // devServer: {
-    // 	host: 'windmill.local',
-    // 	port: 8000
-    // },
+    watchOptions: {
+        aggregateTimeout: 500, // delay before reloading
+        poll: 1000 // enable polling since fsevents are not supported in docker
+    },
     plugins: [
-        // make sure to include the plugin!
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css'
-        }),
+        })
         // new CopyWebpackPlugin([
         // 	{ from: 'assets/fonts', to: 'fonts/'}
         // ])
